@@ -13,7 +13,7 @@ export FILE_TYPE=pdf
 
 set -euo pipefail
 
-mkdir -p batch1
+mkdir -p InternetArchiveFiles
 
 ia search "collection:$COLLECTION" --itemlist |
   xargs -P 4 -I {} bash -c '
@@ -21,8 +21,8 @@ ia search "collection:$COLLECTION" --itemlist |
 id="$1"
 echo "Processing: $id"
 
-# Move into batch directory
-cd batch1 || exit 1
+# Move into destination directory
+cd InternetArchiveFiles || exit 1
 
 # Skip if already downloaded
 if [ -d "$id" ]; then
