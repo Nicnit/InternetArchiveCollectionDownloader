@@ -14,6 +14,8 @@ This tool is (hopefully) simple to use for non-technical people.
 
 #### Usage
 - Clone this repo to a folder you would like the folder storing the downloaded files to be in.
+  - git clone https://github.com/Nicnit/InternetArchiveCollectionDownloader.git
+  - or otherwise download the script.
 - Open collection-downloader.sh in a text editor, change the collection and file types accordingly.
 - In the folder with the collection-downloader.sh file, in a terminal, run
   - chmod +x collection-downloader.sh   # to give the file permission to be executed
