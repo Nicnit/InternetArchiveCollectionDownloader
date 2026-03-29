@@ -1,5 +1,7 @@
 # Internet Archive Collection Downloader
 
+This tool is (hopefully) simple to use for non-technical people.
+
 #### Uses: 
 - Internet Archive CLI
   - Ensure you have this from: https://archive.org/developers/internetarchive/installation.html#installation
