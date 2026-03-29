@@ -4,6 +4,12 @@
 #   https://archive.org/details/jstor_intejethi
 #   Would set COLLECTION variable to " jstor_amerjmath "
 export COLLECTION=jstor_intejethi
+# Write the filetype as is. Is case sensitive.
+# Ignore the period before it, it is inserted later.
+export FILE_TYPE=pdf
+
+# You do not need to change anything else (unless you want to).
+# ---
 
 set -euo pipefail
 
@@ -32,14 +38,14 @@ safe_title=$(echo "$title" | tr "/\\:*?\"<>|" "_" | tr -d "\n")
 
 echo "Title: $safe_title"
 
-# Download PDFs
-ia download "$id" --glob="*.pdf" >/dev/null 2>&1
+# Download files 
+ia download "$id" --glob="*.$FILE_TYPE" >/dev/null 2>&1
 
-# Find PDF
-file=$(find "$id" -type f -iname "*.pdf" | head -n 1 || true)
+# Find files 
+file=$(find "$id" -type f -iname "*.FILE_TYPE" | head -n 1 || true)
 
 if [ -z "$file" ]; then
-    echo "No PDF found for $id, skipping."
+    echo "No $FILE_TYPE found for $id, skipping."
     exit 0
 fi
 
@@ -48,7 +54,7 @@ new_name="${safe_title} - $(basename "$file")"
 
 # Avoid overwrite collisions
 if [ -f "$new_name" ]; then
-    new_name="${safe_title} - ${id}.pdf"
+    new_name="${safe_title} - ${id}.$FILE_TYPE"
 fi
 
 # Move file
